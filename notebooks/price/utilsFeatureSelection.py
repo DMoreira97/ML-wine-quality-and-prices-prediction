@@ -1,0 +1,17 @@
+import numpy as np
+
+def filterPriceData(df, featureSelection):
+    features = ["price_amount"]    
+    if featureSelection in [1, 2, 3]:
+        features = np.concatenate((features,['vintage_year', 'wine_region_country_code', 'wine_region_seo_name', 'wine_winery_seo_name', 'wine_seo_name', 'wine_type_id', 'wine_is_natural', 'price_bottle_type_volume_ml', 'price_bottle_quantity']))
+        print("1 - Info True Across Multiple Platforms\n")
+    if featureSelection in [1, 2]:
+        features = np.concatenate((features,["wine_style_country_seo_name", "wine_style_region_country_seo_name", "wine_style_seo_name", "wine_style_blurb", "wine_style_body", "wine_style_acidity", "wine_style_wine_type_id", "Beef", "Lamb", "Game (deer, venison)", "Poultry", "Pork", "Rich fish (salmon, tuna etc)", "Vegetarian", "Veal", "Shellfish", "Appetizers and snacks", "Lean Fish", "Aperitif", "Goat cheese", "Pasta", "Mature and hard cheese", "Sweet desserts", "Blue cheese", "Spicy food", "Cured Meat", "Mild and soft cheese", "Mushrooms", "Fruity desserts", "Cabernet Sauvignon", "Cabernet Franc", "Malbec", "Merlot", "Petit Verdot", "Carménère", "Chardonnay", "Shiraz/Syrah", "Zinfandel", "Pinot Noir", "Pinot Meunier", "Sauvignon Blanc", "Sémillon", "Tannat", "Baga", "Castelao", "Moscatel de Alejandría", "Malvasia", "Fernao Pires", "Riesling", "Viognier", "Pinotage", "Grenache", "Chenin Blanc", "Malagouzia", "Aragonez", "Trincadeira", "Blaufränkisch", "Nebbiolo", "Barbera", "Dolcetto", "Arneis", "Pinot Blanc", "Cortese", "Tocai Friulano", "Tempranillo", "Zweigelt", "Grüner Veltliner", "Xinomavro", "Sangiovese", "Petite Sirah", "Palomino", "Moscato", "Pedro Ximenez", "Mourvedre", "Xarel-lo", "Parellada", "Trepat", "Viura", "Verdejo", "Mencia", "Cariñena", "Garnacha", "Carignan", "Canaiolo Nero", "Trebbiano", "Malvasia Nera", "Montepulciano", "Corvina", "Rondinella", "Corvinone", "Glera (Prosecco)", "Garganega", "Primitivo", "Aglianico", "Negroamaro", "Nero d'Avola", "Fiano", "Catarratto Bianco", "Muscat of Alexandria", "Gewürztraminer", "Silvaner", "Kerner", "Weißburgunder", "Huxelrebe", "Touriga Nacional", "Touriga Francesa", "Arinto de Bucelas", "Loureiro", "Alvarinho", "Azal", "Avesso", "Batoca", "Tinta Roriz", "Gouveio", "Rabigato", "Malvasia Fina", "Touriga Franca", "Tinta Barroca", "Souzao", "Verdelho", "Sercial", "Malmsey", "Boal Branco", "Terrantez", "Roussanne", "Auxerrois", "Muscadelle", "Aligoté", "Gamay", "Grolleau", "Grenache Blanc", "Bourboulenc", "Cinsault", "Marsanne", "Clairette", "Savagnin", "Pinot Grigio", "Pinot Gris"]))
+        print("2 - Info Produced by Vivino\n")
+    if featureSelection in [1]:
+        features = np.concatenate((features,["oak", "black_fruit", "non_oak", "earth", "red_fruit", "spices", "microbio", "dried_fruit", "vegetal", "floral", "tree_fruit", "tropical_fruit", "citrus_fruit", "vintage_statistics_ratings_average", "vintage_statistics_ratings_count", "vintage_statistics_labels_count", "wine_statistics_ratings_average", "wine_statistics_ratings_count", "wine_statistics_labels_count", "wine_statistics_vintages_count", "wine_taste_structure_acidity", "wine_taste_structure_fizziness", "wine_taste_structure_intensity", "wine_taste_structure_sweetness", "wine_taste_structure_tannin", "wine_taste_structure_user_structure_count", "wine_taste_structure_calculated_structure_count"]))
+        print("3 - Info Produced by Vivino Users\n")
+
+    df = df[features]
+    
+    return df
